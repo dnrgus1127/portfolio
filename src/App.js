@@ -1,6 +1,6 @@
 import "./App.css";
 import HeaderWrap from "./Components/HeaderWrap";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Main from "./Components/Main";
 
@@ -10,7 +10,7 @@ const MainWrap = styled.main`
     content: " ";
     display: block;
   }
-  height: 200vh;
+  height: 400vh;
 `;
 
 const Header = styled.header`
@@ -19,43 +19,25 @@ const Header = styled.header`
   left: 0;
   right: 0;
   z-index: 9999;
+
   transition: all 0.4s;
   transform: translateY(0);
-`;
-const textMove = keyframes`
-   
-    0% {
-      left: -100px;
-    }
-    50% {
-      left: 500px;
-    }
-    100% {
-      left: 800px;
-    }
-  
-`;
-const Test1 = styled.div`
-  width: 100%;
-  height: 930px;
-
-  .test {
+  // ! 적용 안됨
+  &::before {
+    background-color: black;
+    opacity: 1;
+    content: " ";
+    width: 100%;
+    height: 100%;
     position: relative;
     top: 0;
     left: 0;
-    background-color: green;
-    ${(props) =>
-      props.active &&
-      css`
-        animation: ${textMove} 4s linear alternate;
-      `}
+    right: 0;
   }
 `;
 
 function App() {
   const headerRef = useRef();
-  const scrollTop = useRef();
-  const [active, setActive] = useState(false);
   const [lastY, setLastY] = useState(0);
   const handleScroll = useCallback(() => {
     if (lastY > window.scrollY || window.scrollY === 0) {
@@ -63,11 +45,7 @@ function App() {
     } else if (lastY < window.scrollY) {
       headerRef.current.style.transform = "translateY(calc(-100% - 40px))";
     }
-    if (window.scrollY + window.innerHeight > scrollTop.current.offsetTop) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+
     setLastY(window.scrollY);
   }, [lastY]);
 
@@ -90,13 +68,6 @@ function App() {
 
       <MainWrap>
         <Main />
-        <div style={{ height: "930px", width: "100%" }}></div>
-        <Test1 active={active}>
-          {" "}
-          <div className='test' ref={scrollTop}>
-            123
-          </div>
-        </Test1>
       </MainWrap>
     </div>
   );

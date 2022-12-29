@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import backImg from "../assets/img/Snipaste_2022-12-29_01-49-18.png";
 
 const Container = styled.div``;
 
@@ -8,6 +9,7 @@ const TitleWrap = styled.div`
   left: 0;
   right: 0;
   padding: var(--gap);
+  z-index: 9998;
 `;
 
 const Title = styled.h1`
@@ -19,7 +21,14 @@ const Title = styled.h1`
 
   transition: all 1s;
 `;
-
+const Contents = styled.div`
+  position: relative;
+  top: 166px;
+  left: 0%;
+  width: 100%;
+  height: 800px;
+  /* background: url(${backImg}); */
+`;
 export default function Main() {
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
@@ -51,6 +60,7 @@ export default function Main() {
           정욱현
         </Title>
       </TitleWrap>
+      <Contents></Contents>
     </Container>
   );
 }
