@@ -68,6 +68,7 @@ function App() {
 
       <MainWrap>
         <Main />
+
       </MainWrap>
     </div>
   );

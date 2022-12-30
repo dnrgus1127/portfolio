@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import backImg from "../assets/img/Snipaste_2022-12-29_01-49-18.png";
+import backImg from "../assets/img/codeBackground.png";
 
 const Container = styled.div``;
 
 const TitleWrap = styled.div`
   position: fixed;
+  
   left: 0;
   right: 0;
   padding: var(--gap);
@@ -22,45 +23,66 @@ const Title = styled.h1`
   transition: all 1s;
 `;
 const Contents = styled.div`
-  position: relative;
-  top: 166px;
+  position: ${(props) => props.position};
+  top: ${(props) => props.top};
   left: 0%;
   width: 100%;
-  height: 800px;
-  /* background: url(${backImg}); */
+  height: 700px;
+  z-index: -1;
 `;
+
+const BackgroundImg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  z-index : -4;
+  background: url(${backImg});
+`
+
 export default function Main() {
-  const [scrolled, setScrolled] = useState(false);
+  const [fixed, setFixed] = useState(false);
+  const contentRef = useRef();
+  const lastOffset = useRef();
   const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setScrolled(true);
-    } else if (window.scrollY === 0) {
-      setScrolled(false);
+    if (contentRef.current.offsetTop < window.scrollY) {
+      setFixed(true);
     }
-  };
+
+    if (window.scrollY < lastOffset.current) {
+      setFixed(false)
+      console.log(1)
+    }
+  }
   useEffect(() => {
+    lastOffset.current = contentRef.current.offsetTop;
+
     const timer = setInterval(() => {
       window.addEventListener("scroll", handleScroll);
-    }, 1000);
-    // return은 컴포넌트 해제될때
+    }, 100);
     return () => {
       clearInterval(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <Container>
       <TitleWrap>
         <Title>
           <span>
-            {scrolled
-              ? "컴퓨터소프트웨어공학부 사이버보안전공 "
-              : "프론트엔드 개발자 "}
+            프론트엔드 개발자
           </span>
           정욱현
         </Title>
       </TitleWrap>
-      <Contents></Contents>
+      <div style={{ height: "166px" }}></div>
+      <Contents ref={contentRef} position={fixed ? "fixed" : "relative"} top={fixed ? "0px" : ""}><BackgroundImg /></Contents>
+      <div style={{ background: "white" }}>
+        <p style={{ color: "black", zIndex: 3 }}>텍스트 테스트</p>
+      </div>
     </Container>
   );
 }
