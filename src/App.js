@@ -22,18 +22,6 @@ const Header = styled.header`
 
   transition: all 0.4s;
   transform: translateY(0);
-  // ! 적용 안됨
-  &::before {
-    background-color: black;
-    opacity: 1;
-    content: " ";
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
 `;
 
 function App() {
@@ -60,15 +48,14 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastY, handleScroll]);
+
   return (
     <div className='App'>
       <Header ref={headerRef}>
         <HeaderWrap />
       </Header>
-
       <MainWrap>
         <Main />
-
       </MainWrap>
     </div>
   );
