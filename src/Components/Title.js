@@ -7,24 +7,25 @@ const TitleWrap = styled.div`
   right: 0;
   padding: var(--gap);
   z-index: 9998;
+  transform: translateY(-100%);
 `;
 
-const Title = styled.h1`
+const TitleText = styled.h1`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 800;
+  color: ${(props) => props.color};
   span {
     color: var(--point-color);
   }
-  transition: all 1s;
 `;
 
-export default function FixedTitle({ title, subTitle }) {
+export default function Title({ title, subTitle }) {
   return (
     <TitleWrap>
-      <Title>
+      <TitleText>
         <span>{title} </span>
         {subTitle}
-      </Title>
+      </TitleText>
     </TitleWrap>
   );
 }

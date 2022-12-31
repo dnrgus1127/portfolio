@@ -54,6 +54,7 @@ function App() {
       <Header ref={headerRef}>
         <HeaderWrap />
       </Header>
+
       <MainWrap>
         <Main />
       </MainWrap>

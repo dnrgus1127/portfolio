@@ -12,7 +12,7 @@
 
 @media (min-width: 1400px) {
   :root {
-    --gap: 140px;
+    --gap: 100px;
   }
 }
 
@@ -28,7 +28,8 @@ header {
 
 /* ? 임시용 */
 body {
-  background-color: #fff5ee;
+  /* background-color: #fff5ee; */
+  background-color: white;
   font-size: 1.6rem;
 }
 
