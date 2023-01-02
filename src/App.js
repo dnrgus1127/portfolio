@@ -10,7 +10,7 @@ const MainWrap = styled.main`
     content: " ";
     display: block;
   }
-  height: 400vh;
+  height: 800vh;
 `;
 
 const Header = styled.header`
@@ -27,6 +27,7 @@ const Header = styled.header`
 function App() {
   const headerRef = useRef();
   const [lastY, setLastY] = useState(0);
+
   const handleScroll = useCallback(() => {
     if (lastY > window.scrollY || window.scrollY === 0) {
       headerRef.current.style.transform = "translateY(0)";

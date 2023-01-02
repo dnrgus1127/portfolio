@@ -1,16 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const TitleWrap = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  padding: var(--gap);
-  z-index: 9998;
-  transform: translateY(-100%);
-`;
-
-const TitleText = styled.h1`
+const TitleText = styled.p`
+  font-size: 4vw;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 800;
   color: ${(props) => props.color};
@@ -21,11 +13,9 @@ const TitleText = styled.h1`
 
 export default function Title({ title, subTitle }) {
   return (
-    <TitleWrap>
-      <TitleText>
-        <span>{title} </span>
-        {subTitle}
-      </TitleText>
-    </TitleWrap>
+    <TitleText>
+      <span>{title} </span>
+      {subTitle}
+    </TitleText>
   );
 }

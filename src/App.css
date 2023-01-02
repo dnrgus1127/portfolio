@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+/* Black Han Sans */
 
 :root {
   --gap: 60px;
@@ -9,23 +11,6 @@
   --point-color: #ff7360;
   --ls-10: -0.01em;
 }
-
-@media (min-width: 1400px) {
-  :root {
-    --gap: 100px;
-  }
-}
-
-@media (max-width: 640px) {
-  :root {
-    --gap: 20px;
-  }
-}
-
-header {
-  padding-top: 20px;
-}
-
 /* ? 임시용 */
 body {
   /* background-color: #fff5ee; */
@@ -34,9 +19,28 @@ body {
 }
 
 @media (min-width: 1400px) {
+  :root {
+    --gap: 100px;
+  }
   body {
     font-size: 2rem;
   }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gap: 20px;
+  }
+  body {
+    font-size: 1.4rem;
+  }
+}
+
+header {
+  padding-top: 20px;
+}
+
+@media (min-width: 1400px) {
 }
 
 a {
