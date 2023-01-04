@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const TitleText = styled.p`
+  display: inline-block;
   font-size: 4vw;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 800;

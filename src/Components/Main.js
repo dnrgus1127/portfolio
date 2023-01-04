@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import Title from "./Title";
 import backgroundImg from "../assets/img/codeBackground.png";
@@ -7,10 +7,10 @@ import Text from "./Text";
 const StickySection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 500vh;
+  height: 300vh;
   position: relative;
   justify-content: space-between;
-  padding-top: calc(var(--gap) * 2 + 1rem);
+  padding-top: calc(var(--gap) * 2 + 4vw);
 `;
 
 const SubSection = styled.section`
@@ -23,8 +23,9 @@ const Background = styled.div`
   transition: 0.5s all ease;
   width: 100%;
   height: 100vh;
-  opacity: 0.6;
-  background: url(${backgroundImg}) fixed;
+
+  /* background: url(${backgroundImg}) fixed; */
+  background-color: #2475ee;
   z-index: -1;
 `;
 const RightSlide = keyframes`
@@ -56,7 +57,8 @@ const TitleWrap = styled.div`
   padding: var(--gap);
   z-index: 9998;
   transform: translateY(-100%);
-  transition: all 0.3s ease;
+
+  transition: transform 1s ease-out, color 1.5s ease;
 `;
 const TextSlide = styled.div`
   animation: ${(props) =>
@@ -74,13 +76,17 @@ export default function Main() {
   const [titleOn, setTitleOn] = useState(true);
   const titleWrapRef = useRef();
   const textRef1 = useRef();
+  const backgroundRef = useRef();
   const [ani, setAni] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+
     let tmp = titleWrapRef.current.offsetTop;
 
     if (
-      tmp + window.scrollY >=
+      tmp + scrollY >=
       mainRef.current.offsetTop + mainRef.current.clientHeight
     ) {
       setTitleOn(false);
@@ -89,16 +95,16 @@ export default function Main() {
     }
 
     if (
-      window.scrollY + window.innerHeight * 0.9 - mainRef.current.offsetTop >
+      scrollY + window.innerHeight * 0.9 - mainRef.current.offsetTop >
         textRef1.current.offsetTop &&
-      window.scrollY + window.innerHeight * 0.1 - mainRef.current.offsetTop <
+      scrollY + window.innerHeight * 0.1 - mainRef.current.offsetTop <
         textRef1.current.offsetTop
     ) {
       setAni(true);
     } else {
       setAni(false);
     }
-  };
+  }, [scrollY]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -109,7 +115,22 @@ export default function Main() {
       clearInterval(timer);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollY, handleScroll]);
+
+  useEffect(() => {
+    console.log(scrollY, titleWrapRef.current.clientHeight / 2);
+    if (scrollY > titleWrapRef.current.clientHeight / 2) {
+      titleWrapRef.current.style.color = "white";
+    } else {
+      titleWrapRef.current.style.color = "black";
+    }
+
+    if (scrollY > mainRef.current.offsetTop + 400) {
+      titleWrapRef.current.style.transform = "translate(6vw,-100%)";
+    } else {
+      titleWrapRef.current.style.transform = "translate(0%,-100%)";
+    }
+  }, [scrollY]);
   return (
     <React.Fragment>
       <StickySection ref={mainRef}>
@@ -119,12 +140,12 @@ export default function Main() {
         >
           <Title title={"프론트엔드 개발자"} subTitle={"정욱현 포트폴리오"} />
         </TitleWrap>
-        <Background />
+        <Background ref={backgroundRef} />
 
         <TextSlide ref={textRef1} animation={ani}>
           <Text text={"다양한 시각적 요소들과 함께하며"}></Text>
         </TextSlide>
-        <Text text={"작업물에 대한 시각적인 피드백이 잘 드러나기에 "}></Text>
+        <Text text={"작업물에 대한 시각적인 피드백이 잘 드러나는 "}></Text>
         <Text text={"개발의 최전선인 프론트엔드를 선택하게 되었습니다."}></Text>
       </StickySection>
       <SubSection bgColor={"#FFD000"}>
