@@ -3,6 +3,9 @@ import styled, { css, keyframes } from "styled-components";
 import Title from "./Title";
 import backgroundImg from "../assets/img/codeBackground.png";
 import Text from "./Text";
+import StackSection from "./StackSection";
+import GithubSection from "./GithubSection";
+import Footer from "./Footer";
 
 const StickySection = styled.div`
   display: flex;
@@ -57,8 +60,7 @@ const TitleWrap = styled.div`
   padding: var(--gap);
   z-index: 9998;
   transform: translateY(-100%);
-
-  transition: transform 1s ease-out, color 1.5s ease;
+  transition: all 1s ease-out, color 1.5s ease;
 `;
 const TextSlide = styled.div`
   animation: ${(props) =>
@@ -118,7 +120,6 @@ export default function Main() {
   }, [scrollY, handleScroll]);
 
   useEffect(() => {
-    console.log(scrollY, titleWrapRef.current.clientHeight / 2);
     if (scrollY > titleWrapRef.current.clientHeight / 2) {
       titleWrapRef.current.style.color = "white";
     } else {
@@ -126,7 +127,7 @@ export default function Main() {
     }
 
     if (scrollY > mainRef.current.offsetTop + 400) {
-      titleWrapRef.current.style.transform = "translate(6vw,-100%)";
+      titleWrapRef.current.style.transform = "translate(25%,-100%)";
     } else {
       titleWrapRef.current.style.transform = "translate(0%,-100%)";
     }
@@ -138,22 +139,31 @@ export default function Main() {
           ref={titleWrapRef}
           style={titleOn ? { opacity: "1" } : { opacity: "0" }}
         >
-          <Title title={"프론트엔드 개발자"} subTitle={"정욱현 포트폴리오"} />
+          <Title
+            scrollY={scrollY}
+            invisiblePosition={800}
+            title={"프론트엔드 개발자 "}
+            subTitle={"정욱현 포트폴리오"}
+          />
         </TitleWrap>
         <Background ref={backgroundRef} />
 
         <TextSlide ref={textRef1} animation={ani}>
-          <Text text={"다양한 시각적 요소들과 함께하며"}></Text>
+          <Text text={"제가 생각하는 프론트엔드 개발자 "}></Text>
         </TextSlide>
-        <Text text={"작업물에 대한 시각적인 피드백이 잘 드러나는 "}></Text>
-        <Text text={"개발의 최전선인 프론트엔드를 선택하게 되었습니다."}></Text>
+        <Text text={"요청받은 디자인 그대로 구현할 수 있고 "}></Text>
+        <Text text={"끊임없이 더 나은 코드를 작성할 수 있게 고민하며"}></Text>
+        <Text text={"아래와 같은 기술들을 다룰 수 있습니다."}></Text>
       </StickySection>
       <SubSection bgColor={"#FFD000"}>
-        <h1>가나다라마바사</h1>
+        <StackSection />
       </SubSection>
       <SubSection>
-        <h1>가나다라마바사</h1>
+        <GithubSection />
       </SubSection>
+      <div id='footer'>
+        <Footer />
+      </div>
     </React.Fragment>
   );
 }

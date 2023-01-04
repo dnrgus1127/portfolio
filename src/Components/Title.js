@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const TitleText = styled.p`
@@ -12,10 +12,18 @@ const TitleText = styled.p`
   }
 `;
 
-export default function Title({ title, subTitle }) {
+export default function Title({ title, subTitle, scrollY, invisiblePosition }) {
+  useEffect(() => {
+    console.log(document.querySelector(".hide"));
+    if (scrollY > invisiblePosition) {
+      document.querySelector(".hide").style.opacity = 0;
+    } else {
+      document.querySelector(".hide").style.opacity = 1;
+    }
+  }, [scrollY, invisiblePosition]);
   return (
     <TitleText>
-      <span>{title} </span>
+      <span className='hide'>{title}</span>
       {subTitle}
     </TitleText>
   );

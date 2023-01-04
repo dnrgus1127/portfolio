@@ -10,7 +10,6 @@ const MainWrap = styled.main`
     content: " ";
     display: block;
   }
-  height: 800vh;
 `;
 
 const Header = styled.header`
