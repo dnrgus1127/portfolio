@@ -89,7 +89,7 @@ export default function Main() {
 
     if (
       tmp + scrollY >=
-      mainRef.current.offsetTop + mainRef.current.clientHeight
+      mainRef.current.offsetTop + mainRef.current.clientHeight - 200
     ) {
       setTitleOn(false);
     } else {
@@ -152,7 +152,7 @@ export default function Main() {
           <Text text={"제가 생각하는 프론트엔드 개발자 "}></Text>
         </TextSlide>
         <Text text={"요청받은 디자인 그대로 구현할 수 있고 "}></Text>
-        <Text text={"끊임없이 더 나은 코드를 작성할 수 있게 고민하며"}></Text>
+        <Text text={"끊임없이 발전하며"}></Text>
         <Text text={"아래와 같은 기술들을 다룰 수 있습니다."}></Text>
       </StickySection>
       <SubSection bgColor={"#FFD000"}>

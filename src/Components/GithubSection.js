@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -12,14 +12,24 @@ const Container = styled.div`
     font-size: 6rem;
     font-family: inherit;
     font-weight: 800;
-    display: inline-block;
   }
 `;
 
 export default function GithubSection() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/dnrgus1127")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json, json.avatar_url, json.name, json.repos_url);
+        setData(json);
+      });
+  }, []);
   return (
     <Container>
       <h1>깃허브</h1>
+      {data ? <a href={data.html_url}>깃허브 바로가기</a> : null}
     </Container>
   );
 }

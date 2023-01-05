@@ -14,7 +14,6 @@ const TitleText = styled.p`
 
 export default function Title({ title, subTitle, scrollY, invisiblePosition }) {
   useEffect(() => {
-    console.log(document.querySelector(".hide"));
     if (scrollY > invisiblePosition) {
       document.querySelector(".hide").style.opacity = 0;
     } else {
