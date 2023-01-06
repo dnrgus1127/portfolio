@@ -38,7 +38,7 @@ export default function GithubSection() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/dnrgus1127/ComponentProject/readme")
+    fetch("https://api.github.com/repos/dnrgus1127/portfolio/readme")
       .then((res) => res.json())
       .then((json) => {
         fetch(json.download_url)
