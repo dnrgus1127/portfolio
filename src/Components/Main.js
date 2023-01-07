@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import Title from "./Title";
-import backgroundImg from "../assets/img/codeBackground.png";
 import Text from "./Text";
 import StackSection from "./StackSection";
 import GithubSection from "./GithubSection";
@@ -23,11 +22,9 @@ const SubSection = styled.section`
 const Background = styled.div`
   position: sticky;
   top: 0;
-  transition: 0.5s all ease;
+  transition: 0.5s all ease, opacity 0.1s ease-out;
   width: 100%;
   height: 100vh;
-
-  /* background: url(${backgroundImg}) fixed; */
   background-color: #2475ee;
   z-index: -1;
 `;
@@ -155,7 +152,7 @@ export default function Main() {
         <Text text={"끊임없이 발전하며"}></Text>
         <Text text={"아래와 같은 기술들을 다룰 수 있습니다."}></Text>
       </StickySection>
-      <SubSection bgColor={"#FFD000"}>
+      <SubSection bgColor={"#FF6E31"}>
         <StackSection />
       </SubSection>
       <SubSection>

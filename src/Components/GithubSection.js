@@ -34,11 +34,16 @@ const MarkdownCss = styled.div`
     color: lightgreen;
   }
 `;
+
+//!- need to css styling
+const projectArr = ["componentProject", "portfolio", "noticeBoard"];
+
 export default function GithubSection() {
   const [data, setData] = useState();
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/dnrgus1127/componentProject/readme")
+    fetch(`https://api.github.com/repos/dnrgus1127/${projectArr[index]}/readme`)
       .then((res) => res.json())
       .then((json) => {
         fetch(json.download_url)
@@ -48,14 +53,21 @@ export default function GithubSection() {
             console.log(markdown);
           });
       });
-  }, []);
+  }, [index]);
   return (
     <Container>
-      <h1>깃허브</h1>
+      <h1>GitHub</h1>
       {data ? <a href={data.html_url}>깃허브 바로가기</a> : null}
       <MarkdownCss>
         {data ? <ReactMarkdown>{data}</ReactMarkdown> : null}
       </MarkdownCss>
+      <button
+        onClick={() => {
+          setIndex((index + 1) % 3);
+        }}
+      >
+        next
+      </button>
     </Container>
   );
 }
