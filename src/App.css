@@ -18,6 +18,7 @@ html::-webkit-scrollbar-track {
   --line-height-medium: 1.76;
   font-size: 62.5%;
   --point-color: #2475ee;
+  --light-color: #11c4ff;
   --ls-10: -0.01em;
 }
 /* ? 임시용 */
