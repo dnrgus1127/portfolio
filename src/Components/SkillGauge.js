@@ -67,6 +67,8 @@ const GaugeWrap = styled.ul`
     background-color: grey;
     animation: ${ProficiencyFrame} 0.3s ease-in-out alternate forwards;
   }
+
+  //! 의도하는 대로 작동하지 않고 있다.
   li.unPainted:nth-of-type(4) {
     background-color: green;
     color: green;
