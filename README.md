@@ -1,73 +1,61 @@
-# Getting Started with Create React App
+# 연습용 포트폴리오 사이트 :fire:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## :question: 프로젝트 목적
 
-## Available Scripts
+실제 포트폴리오를 개발하기 전에 간단하게 연습용 포트폴리오 사이트를 만들어 보면서 포트폴리오에 어떤 내용들이 들어가면 좋을까 구상해 보고 React, HTML, CSS, Javascript에 익숙해지기 위해서 개발하는 프로젝트
 
-In the project directory, you can run:
+<br></br>
 
-### `npm start`
+## :computer: 개발 스택
 
-123
+HTML, CSS, JS, React
 
-> 123
-> Runs the app in the development mode.\
-> Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br></br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## :grey_exclamation: 프로젝트 요소들
 
-### `npm test`
+- 헤더 네비게이션
+  - 스크롤이 내려가면 사라지고 스크롤을 올리면 다시 나타나는 이펙트 적용
+- 메인
+  - sticky 포지션을 이용한 디자인 효과 연습 중
+- 기술 스택
+- GitHub
+  - Github에 repo정보 요청하여 readme.md 내용을 받아서 출력할 수 있게 틀만 잡아둠
+- Footer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br></br>
 
-### `npm run build`
+## :gift: 프로젝트를 진행하면서 알게 되고 공부한 사실들
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### HTML
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- section 태그의 필요성
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### CSS
 
-### `npm run eject`
+- 반응형 웹에 대한 이해
+- var를 이용한 css 변수 사용 방법
+- 가상 클래스 선택자, 가상 요소 선택자에 대한 이해와 연습
+- sticky position 이해 및 적용 연습
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### JS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- window 스크롤 이벤트 (scrollY, scrollX, 스크롤 이벤트 최적화)
+- element의 크기와 오프셋을 구하고 활용하는 (offsetTop, clinetHeight 등)
+- fetch를 이용해 github에서 사용자, repo, readme정보 읽어오기
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### React
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 러닝 리액트(2판)을 읽고 이해한 부분에 대한 적용
+- useEffect, useMemo 훅 사용 연습
+- React-markdown을 이용한 리액트 내에서 마크다운 불러오기
+- React-icon 패키지 이해
+- styled-components에서의 keyframe 적용 방법
 
-## Learn More
+### 체감
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 반응형 웹을 만들기 위한 고민과, 다양한 애니메이션 연습에서 공부가 되고 있다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br></br>
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+###

@@ -50,7 +50,6 @@ export default function GithubSection() {
           .then((res) => res.text())
           .then((markdown) => {
             setData(markdown);
-            console.log(markdown);
           });
       });
   }, [index]);
