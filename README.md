@@ -60,3 +60,5 @@ HTML, CSS, JS, React
 - 반응형 웹을 만들기 위한 고민과, 다양한 애니메이션 연습에서 공부가 되고 있다.
 
 ###
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=dnrgus1127&repo=portfolio&theme=moltack)](https://github.com/dnrgus1127/portfolio)
