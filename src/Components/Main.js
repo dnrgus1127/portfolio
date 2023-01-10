@@ -10,7 +10,9 @@ const StickySection = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: calc(var(--gap) * 2 + 4vw);
+  /* padding-top: calc(var(--gap) * 2 + 4vw); */
+  background-color: var(--point-color);
+  margin-top: calc(var(--gap) * 2 + 4vw);
 
   .textWrap {
     display: flex;
@@ -18,6 +20,14 @@ const StickySection = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 3rem 0;
+    margin-top: 50vh;
+  }
+
+  @media screen and (max-width: 640px) {
+    .textWrap {
+      height: 100vh;
+      margin-top: 20vh;
+    }
   }
 `;
 
@@ -30,7 +40,7 @@ const Background = styled.div`
   top: 0;
   transition: 0.5s all ease, opacity 0.1s ease-out;
   width: 100%;
-  height: 90vh;
+  height: 0;
   background-color: #2475ee;
   z-index: -1;
 `;
@@ -84,13 +94,14 @@ export default function Main() {
     // 배경에 따른 타이틀 보이게 안보이게
     // opacity로 조정 시 다른 요소들을 가려서 transform 사용
     if (
-      scrollY >
-        mainRef.current.offsetTop + mainRef.current.clientHeight * 0.1 &&
-      scrollY < mainRef.current.offsetTop + mainRef.current.clientHeight * 0.8
+      scrollY + mainRef.current.clientHeight * 0.1 >=
+        mainRef.current.offsetTop &&
+      scrollY + mainRef.current.clientHeight * 0.1 <
+        mainRef.current.offsetTop + mainRef.current.clientHeight * 0.8
     ) {
       setTransTitle(25);
     } else if (
-      scrollY >=
+      scrollY + mainRef.current.clientHeight * 0.1 >=
       mainRef.current.offsetTop + mainRef.current.clientHeight * 0.8
     ) {
       setTransTitle(100);
@@ -124,7 +135,7 @@ export default function Main() {
         </div>
       </StickySection>
       <SubSection bgColor={"white"}>
-        <StackSection />
+        <StackSection scrollY={scrollY} />
       </SubSection>
       <SubSection>
         <GithubSection />

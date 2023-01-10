@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 50vh;
+`;
 
 const Contents = styled.p`
   padding: 0 var(--gap);
-  font-size: 3em;
+  font-size: 4vw;
+
   color: white;
-  /* font-family: "Black Han Sans", sans-serif; */
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 800;
 `;
