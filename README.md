@@ -36,6 +36,7 @@ HTML, CSS, JS, React
 - 반응형 웹에 대한 이해
 - var를 이용한 css 변수 사용 방법
 - 가상 클래스 선택자, 가상 요소 선택자에 대한 이해와 연습
+  - SkillGague를 구현하면서 구조 가상 클래스 선택자에 대해 더 알게되었다.
 - sticky position 이해 및 적용 연습
 
 ### JS
