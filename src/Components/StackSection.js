@@ -83,7 +83,7 @@ export default function StackSection() {
             className='gagueWrapper'
             style={{ width: "100%", height: "4rem" }}
           >
-            <SkillGauge per={60} />
+            <SkillGauge per={54} />
           </div>
 
           <h3>정욱현's Skill</h3>

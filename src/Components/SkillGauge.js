@@ -10,6 +10,15 @@ const ProficiencyFrame = keyframes`
     width: 100% ;
   }
 `;
+
+const Under20perFrame = (w) => keyframes`
+ 0% {
+    width: 0;
+ }
+ 100% {
+    width: ${w}%;
+ }
+`;
 //-----------------------keyframe
 
 const Container = styled.div`
@@ -39,7 +48,7 @@ const GaugeWrap = styled.ul`
     height: 100%;
     background-color: grey;
     margin-right: 0.5rem;
-    box-shadow: 0px 0px 5px rgb(96, 96, 96, 0.7);
+    box-shadow: 1px 1px 10px rgb(96, 96, 96, 0.6);
   }
 
   .painted::after {
@@ -53,27 +62,24 @@ const GaugeWrap = styled.ul`
     animation: ${ProficiencyFrame} 0.3s ease-in-out alternate forwards;
   }
 
-  .painted {
-    /* background-color: var(--light-color); */
-  }
-
-  & .unPainted::after {
+  //
+  & .lastPainted::after {
     position: absolute;
     content: " ";
     top: 0;
     left: 0;
     height: 100%;
     width: 0%;
-    background-color: grey;
+    background-color: var(--light-color);
     animation: ${ProficiencyFrame} 0.3s ease-in-out alternate forwards;
   }
 
-  //! 의도하는 대로 작동하지 않고 있다.
-  li.unPainted:nth-of-type(4) {
-    background-color: green;
-    color: green;
+  .lastPainted::after {
+    animation: ${(props) => Under20perFrame(props.width)} 0.3s ease-in-out
+      alternate forwards;
   }
 
+  // 게이지별 delay
   & :nth-child(1)::after {
     animation-delay: 0.3s;
   }
@@ -95,15 +101,24 @@ const createArray = (length) => [...Array(length)];
 
 // TODO : 숙련도 퍼센트 별로 색이 다르게, 처음 보일때나 hover 시에 숙련도가 차오르도록
 export default function SkillGauge({ per }) {
+  const lastPaint = (num) => (
+    <React.Fragment>
+      <li className='lastPainted'></li>
+      {createArray(5 - Math.trunc(num / 20) - 1).map((n, i) => (
+        <li key={i + 5}></li>
+      ))}
+    </React.Fragment>
+  );
   return (
     <Container>
-      <GaugeWrap>
-        {createArray(5).map((n, i) => (
+      <GaugeWrap width={(per % 20) * 5}>
+        {createArray(Math.trunc(per / 20)).map((n, i) => (
           <li
             key={i}
-            className={i < Math.trunc(per / 20) ? "painted" : "unPainted"}
+            className={i < Math.trunc(per / 20) ? "painted" : "lastPainted"}
           ></li>
         ))}
+        {per !== 100 ? lastPaint(per) : null}
       </GaugeWrap>
       <p className='per'>{per}%</p>
     </Container>
