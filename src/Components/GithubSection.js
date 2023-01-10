@@ -36,7 +36,7 @@ const MarkdownCss = styled.div`
 `;
 
 //!- need to css styling
-const projectArr = ["componentProject", "portfolio", "noticeBoard"];
+const projectArr = ["portfolio", "componentProject", "noticeBoard"];
 
 export default function GithubSection() {
   const [data, setData] = useState();
