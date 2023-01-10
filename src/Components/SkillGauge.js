@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 /// keyframe-------------------
@@ -28,8 +28,9 @@ const Container = styled.div`
 
   .per {
     line-height: 4rem;
-    font-size: 1.6em;
+    font-size: 1.8em;
     margin-left: 1.5rem;
+    font-weight: 800;
   }
 `;
 
@@ -59,7 +60,8 @@ const GaugeWrap = styled.ul`
     height: 100%;
     width: 0%;
     background-color: var(--light-color);
-    animation: ${ProficiencyFrame} 0.3s ease-in-out alternate forwards;
+    animation: ${ProficiencyFrame} 0.3s ease-in-out
+      ${(props) => props.animationCount} forwards;
   }
 
   //
@@ -71,12 +73,13 @@ const GaugeWrap = styled.ul`
     height: 100%;
     width: 0%;
     background-color: var(--light-color);
-    animation: ${ProficiencyFrame} 0.3s ease-in-out alternate forwards;
+    animation: ${ProficiencyFrame} 0.3s ease-in-out
+      ${(props) => props.animationCount} forwards;
   }
 
   .lastPainted::after {
     animation: ${(props) => Under20perFrame(props.width)} 0.3s ease-in-out
-      alternate forwards;
+      ${(props) => props.animationCount} forwards;
   }
 
   // 게이지별 delay
@@ -100,7 +103,20 @@ const GaugeWrap = styled.ul`
 const createArray = (length) => [...Array(length)];
 
 // TODO : 숙련도 퍼센트 별로 색이 다르게, 처음 보일때나 hover 시에 숙련도가 차오르도록
-export default function SkillGauge({ per }) {
+export default function SkillGauge({ per, scrollY }) {
+  const gaugeRef = useRef();
+  const [frame, setFrame] = useState("none");
+
+  useEffect(() => {
+    if (
+      scrollY + window.innerHeight >=
+      gaugeRef.current.offsetTop + gaugeRef.current.clientHeight * 3
+    ) {
+      setFrame("alternate");
+    } else {
+      setFrame("none");
+    }
+  }, [scrollY]);
   const lastPaint = (num) => (
     <React.Fragment>
       <li className='lastPainted'></li>
@@ -110,8 +126,8 @@ export default function SkillGauge({ per }) {
     </React.Fragment>
   );
   return (
-    <Container>
-      <GaugeWrap width={(per % 20) * 5}>
+    <Container ref={gaugeRef}>
+      <GaugeWrap width={(per % 20) * 5} animationCount={frame}>
         {createArray(Math.trunc(per / 20)).map((n, i) => (
           <li
             key={i}

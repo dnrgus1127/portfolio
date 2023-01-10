@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import reactIcon from "../assets/img/pngwing.com.png";
+import { SkillData } from "../data/SkillData";
 import SkillGauge from "./SkillGauge";
+import TitleAndList from "./TitleAndList";
 
 const Container = styled.div`
   text-align: center;
   font-family: "Noto Sans KR", sans-serif;
   padding: var(--gap) var(--gap);
+  padding-top: calc(var(--gap) / 2);
   h1 {
     /* font-size: 6rem; */
     font-family: inherit;
@@ -24,9 +27,13 @@ const StackItem = styled.div`
   }
   .iconWrap {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  img {
+  #reactIcon {
     width: 50%;
   }
   @media screen and (max-width: 500px) {
@@ -38,6 +45,15 @@ const StackItem = styled.div`
     .iconWrap {
       width: 100%;
     }
+  }
+
+  .gitStatWrap {
+    width: 100%;
+    margin: auto 0;
+  }
+
+  .gitStatWrap img {
+    width: 100%;
   }
 `;
 
@@ -66,7 +82,7 @@ const StackTextStyle = styled.div`
   }
 `;
 
-export default function StackSection() {
+export default function StackSection({ scrollY }) {
   return (
     <Container>
       <h1>기술 스택</h1>
@@ -81,15 +97,25 @@ export default function StackSection() {
           <h3>숙련도</h3>
           <div
             className='gagueWrapper'
-            style={{ width: "100%", height: "4rem" }}
+            style={{ width: "100%", height: "4rem", marginBottom: "2rem" }}
           >
-            <SkillGauge per={54} />
+            <SkillGauge per={72} scrollY={scrollY} />
           </div>
-
-          <h3>정욱현's Skill</h3>
+          <TitleAndList
+            title={"정욱현's React Skill"}
+            list={SkillData.React.mySkill}
+          />
         </StackTextStyle>
         <div className='iconWrap'>
-          <img src={reactIcon} alt='' />
+          <img src={reactIcon} id='reactIcon' alt='' />
+          <div className='gitStatWrap'>
+            <a href='https://github.com/dnrgus1127/portfolio'>
+              <img
+                src='https://github-readme-stats.vercel.app/api/pin/?username=dnrgus1127&repo=portfolio&theme=dark '
+                alt=''
+              />
+            </a>
+          </div>
         </div>
       </StackItem>
     </Container>
