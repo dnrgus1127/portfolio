@@ -42,7 +42,7 @@ const TitleWrap = styled.div`
   padding: var(--gap);
   z-index: 9998;
   transform: translateY(-100%);
-  transition: all 1s ease-out, color 1s ease;
+  transition: transform 1s ease-out, color 1s ease, opacity 0.3s ease-out;
 `;
 
 export default function Main() {
@@ -50,6 +50,12 @@ export default function Main() {
   const titleWrapRef = useRef();
   const backgroundRef = useRef();
   const [scrollY, setScrollY] = useState(0);
+  const [trnasTitle, setTransTitle] = useState(0);
+
+  const createStyle = (per) => ({
+    transform: `translate(${per}%,-100%)`,
+    opacity: `${per === 100 ? 0 : 1}`,
+  });
 
   const handleScroll = useCallback(() => {
     setScrollY(window.scrollY);
@@ -66,32 +72,42 @@ export default function Main() {
     };
   }, [scrollY, handleScroll]);
 
+  // 스크롤에 따른 스타일링
   useEffect(() => {
+    // 타이틀 컬러 스타일링
     if (scrollY > titleWrapRef.current.clientHeight / 2) {
       titleWrapRef.current.style.color = "white";
     } else {
       titleWrapRef.current.style.color = "black";
     }
 
+    // 배경에 따른 타이틀 보이게 안보이게
+    // opacity로 조정 시 다른 요소들을 가려서 transform 사용
     if (
       scrollY >
         mainRef.current.offsetTop + mainRef.current.clientHeight * 0.1 &&
       scrollY < mainRef.current.offsetTop + mainRef.current.clientHeight * 0.8
     ) {
-      titleWrapRef.current.style.transform = "translate(25%,-100%)";
+      setTransTitle(25);
     } else if (
       scrollY >=
       mainRef.current.offsetTop + mainRef.current.clientHeight * 0.8
     ) {
-      titleWrapRef.current.style.transform = "translate(100%,-100%)";
+      setTransTitle(100);
     } else {
-      titleWrapRef.current.style.transform = "translate(0%,-100%)";
+      setTransTitle(0);
     }
   }, [scrollY]);
+
+  // 새로고침 scrollY값 초기화
+  useEffect(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
   return (
     <React.Fragment>
       <StickySection ref={mainRef}>
-        <TitleWrap ref={titleWrapRef}>
+        <TitleWrap ref={titleWrapRef} style={createStyle(trnasTitle)}>
           <Title
             scrollY={scrollY}
             invisiblePosition={800}

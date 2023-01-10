@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const TitleText = styled.p`
@@ -13,16 +13,14 @@ const TitleText = styled.p`
 `;
 
 export default function Title({ title, subTitle, scrollY, invisiblePosition }) {
-  useEffect(() => {
-    if (scrollY > invisiblePosition) {
-      document.querySelector(".hide").style.opacity = 0;
-    } else {
-      document.querySelector(".hide").style.opacity = 1;
-    }
-  }, [scrollY, invisiblePosition]);
   return (
     <TitleText>
-      <span className='hide'>{title}</span>
+      <span
+        className='hide'
+        style={scrollY > invisiblePosition ? { opacity: 0 } : { opacity: 1 }}
+      >
+        {title}
+      </span>
       {subTitle}
     </TitleText>
   );
