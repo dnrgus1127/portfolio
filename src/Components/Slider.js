@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+// ? 슬라이더 컴포넌트
+/* children으로 받은 컴포넌트를 가로 슬라이더 형태로 만들어 주는 컴포넌트
+ */
+
 const Container = styled.div`
   height: 100vh;
   position: relative;
