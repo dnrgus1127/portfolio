@@ -38,6 +38,7 @@ HTML, CSS, JS, React
 - 가상 클래스 선택자, 가상 요소 선택자에 대한 이해와 연습
   - SkillGague를 구현하면서 구조 가상 클래스 선택자에 대해 더 알게되었다.
 - sticky position 이해 및 적용 연습
+- 시간차를 이용한 애니메이션 적용
 
 ### JS
 
@@ -52,13 +53,12 @@ HTML, CSS, JS, React
 - React-markdown을 이용한 리액트 내에서 마크다운 불러오기
 - React-icon 패키지 이해
 - styled-components에서의 keyframe 적용 방법
+- Slider 구현
 
 ---
 
 ### 체감
 
-- 반응형 웹을 만들기 위한 고민과, 다양한 애니메이션 연습에서 공부가 되고 있다.
+반응형 웹을 만들기 위한 고민과, 다양한 애니메이션 연습에서 공부가 되고 있다.
 
 ###
-
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=dnrgus1127&repo=portfolio&theme=moltack)](https://github.com/dnrgus1127/portfolio)
