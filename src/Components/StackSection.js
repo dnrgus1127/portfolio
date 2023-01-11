@@ -4,6 +4,7 @@ import reactIcon from "../assets/img/pngwing.com.png";
 import { SkillData } from "../data/SkillData";
 import SkillGauge from "./SkillGauge";
 import TitleAndList from "./TitleAndList";
+import PageImg from "../assets/img/pageChature.png";
 
 const Container = styled.div`
   text-align: center;
@@ -34,7 +35,11 @@ const StackItem = styled.div`
   }
 
   #reactIcon {
-    width: 50%;
+    width: 3rem;
+  }
+  #pagePreview {
+    width: 100%;
+    border: 1px solid lightgrey;
   }
   @media screen and (max-width: 500px) {
     display: block;
@@ -89,9 +94,10 @@ export default function StackSection({ scrollY }) {
       <StackItem className='stackSection'>
         <StackTextStyle className='infoWrap'>
           <h2>리액트</h2>
+          <img src={reactIcon} id='reactIcon' alt='' />
           <p>
             사용자 인터페이스를 만들기 위해 사용되는{" "}
-            <span style={{ color: "#999900" }}>자바스크립트 </span>
+            <span style={{ color: "var(--point-color)" }}>자바스크립트 </span>
             라이브러리
           </p>
           <h3>숙련도</h3>
@@ -107,7 +113,9 @@ export default function StackSection({ scrollY }) {
           />
         </StackTextStyle>
         <div className='iconWrap'>
-          <img src={reactIcon} id='reactIcon' alt='' />
+          <img src={PageImg} id='pagePreview' alt='' />
+          <p>▲ 포트폴리오 미리보기</p>
+
           <div className='gitStatWrap'>
             <a href='https://github.com/dnrgus1127/portfolio'>
               <img
@@ -115,6 +123,7 @@ export default function StackSection({ scrollY }) {
                 alt=''
               />
             </a>
+            <p>▲ 포트폴리오 바로가기</p>
           </div>
         </div>
       </StackItem>
