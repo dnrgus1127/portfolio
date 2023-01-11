@@ -20,8 +20,14 @@ HTML, CSS, JS, React
   - sticky 포지션을 이용한 디자인 효과 연습 중
 - 기술 스택
 - GitHub
-  - Github에 repo정보 요청하여 readme.md 내용을 받아서 출력할 수 있게 틀만 잡아둠
+  - Github에 repo정보 요청하여 readme.md 내용을 읽어서 React-Markdown으로 화면에 표시
 - Footer
+  - instagram, velog, github 링크 및 연락처, 이메일, 깃허브 주소 표시
+- TODO
+  - 스크롤 영역에 따른 헤더 글자 색 변경 기능
+  - 깃허브 열고 닫기
+  - 기술 스택 내용 추가
+  - main 형태 변경
 
 ---
 
