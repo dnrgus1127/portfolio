@@ -5,7 +5,6 @@ import Text from "./Text";
 import StackSection from "./StackSection";
 import GithubSection from "./GithubSection";
 import Footer from "./Footer";
-import Slider from "./Slider";
 
 const StickySection = styled.div`
   display: flex;
@@ -138,17 +137,10 @@ export default function Main() {
       <SubSection bgColor={"white"}>
         <StackSection scrollY={scrollY} />
       </SubSection>
-      <SubSection>
+      <SubSection bgColor={"#3F4E4F"}>
         <GithubSection />
       </SubSection>
-      <div>
-        <Slider>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-          <div style={{ backgroundColor: "red", height: "50vh" }}>4</div>
-        </Slider>
-      </div>
+
       <div id='footer'>
         <Footer />
       </div>
