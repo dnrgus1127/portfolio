@@ -11,6 +11,7 @@ const Container = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   padding: var(--gap) var(--gap);
   padding-top: calc(var(--gap) / 2);
+  height: 100vh;
   h1 {
     /* font-size: 6rem; */
     font-family: inherit;
