@@ -26,8 +26,9 @@ HTML, CSS, JS, React
 - TODO
   - 스크롤 영역에 따른 헤더 글자 색 변경 기능
   - 깃허브 열고 닫기
-  - 기술 스택 내용 추가
+  - 기술 스택 내용 추가(javascript,html,css3)
   - main 형태 변경
+  -
 
 ---
 
