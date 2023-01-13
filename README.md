@@ -28,7 +28,7 @@ HTML, CSS, JS, React
   - 깃허브 열고 닫기
   - 기술 스택 내용 추가(javascript,html,css3)
   - main 형태 변경
-  -
+  - 임시
 
 ---
 
